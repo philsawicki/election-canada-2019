@@ -1,0 +1,35 @@
+{
+  "name": "election-canada-2019",
+  "version": "1.0.0",
+  "description": "Dashboard for Canada's 2019 General Election",
+  "main": "server.js",
+  "scripts": {
+    "build": "rollup --config",
+    "build:watch": "rollup --config --watch",
+    "predeploy": "npm run lint && npm test && npm run build",
+    "deploy": "gh-pages --dist ./dist --add --message \"Update live website\"",
+    "lint": "tslint --project .",
+    "serve": "node --experimental-modules server.mjs",
+    "test": "jest",
+    "test:watch": "npm test -- --watchAll",
+    "generate:coverage": "npm test -- --coverage"
+  },
+  "keywords": [
+    "canada",
+    "election",
+    "dashboard"
+  ],
+  "author": "Philippe Sawicki (https://philippesawicki.com)",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "gh-pages": "^2.1.1",
+    "jest": "^24.9.0",
+    "rollup": "^1.25.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-jest": "^24.1.0",
+    "tslib": "^1.10.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  }
+}

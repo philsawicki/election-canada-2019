@@ -1,16 +1,16 @@
 /**
  * "cyrb53" hashing function.
  *
- * @param string Text to hash.
+ * @param str Text to hash.
  * @param seed Hashing seed.
  * @returns The hash value of the given text.
  */
-export function hash(string: string, seed: number = 0) {
+export function hash(str: string, seed: number = 0) {
     let hash1 = 0xdeadbeef ^ seed;
     let hash2 = 0x41c6ce57 ^ seed;
 
-    for (let i = 0, ch; i < string.length; ++i) {
-        ch = string.charCodeAt(i);
+    for (let i = 0, ch; i < str.length; ++i) {
+        ch = str.charCodeAt(i);
         hash1 = Math.imul(hash1 ^ ch, 2654435761);
         hash2 = Math.imul(hash2 ^ ch, 1597334677);
     }

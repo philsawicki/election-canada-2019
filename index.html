@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Elections Canada 2019</title>
+
+    <meta name="author" content="Philippe Sawicki">
+    <meta name="description" content="Dashboard for Canada's 2019 general election">
+
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Muli:300,400,700">
+    <link rel="stylesheet" href="./styles/dashboard-theme.min.css">
+
+    <style type="text/css">
+        .page-content {
+            width: 100%;
+        }
+
+        .statistic-block strong,
+        .statistic-block span {
+            display: inline-block;
+        }
+
+        .seats-label {
+            font-size: 50%;
+            text-transform: uppercase;
+        }
+
+        .stats-2-block .stats-2,
+        .stats-3-block .stats-3 {
+            justify-content: center;
+            text-align: center;
+        }
+        .stats-2-block .progress,
+        .stats-3-block .progress {
+            margin: 10px auto;
+        }
+        .stats-2-block .stats-2::after,
+        .stats-3-block .stats-3::after {
+            right: 0;
+        }
+
+        #ridings-list {
+            margin-bottom: 30px !important;
+        }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+          <div class="navbar-header">
+            <!-- Navbar Header-->
+            <a href="#" class="navbar-brand">
+              <div class="brand-text brand-big visible text-uppercase">
+                  Elections <strong class="text-primary">Canada</strong>
+                  <strong>2019</strong>
+              </div>
+              <div class="brand-text brand-sm">
+                  <strong class="text-primary">CAN</strong>
+                  <strong>2019</strong>
+              </div>
+            </a>
+            <!-- Sidebar Toggle Btn-->
+            <button class="sidebar-toggle">
+                <i class="fas fa-poll"></i>
+            </button>
+          </div>
+          <div class="right-menu list-inline no-margin-bottom">
+            <div class="list-inline-item">
+                <i class="far fa-clock"></i>&nbsp;&nbsp;Last updated on <strong id="last-update-date">...</strong> at <strong id="last-update-time">...</strong>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="d-flex align-items-stretch">
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Live-streaming results starting October 21st, 2019 at 7:00PM (ET)</h2>
+          </div>
+        </div>
+
+        <section class="no-padding-top no-padding-bottom">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-3 col-sm-6 result-card">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                        <strong class="party-name">...</strong>
+                    </div>
+                    <div class="number dashtext-1">
+                        <span class="count">...</span>
+                        <span class="seats-label d-none d-lg-inline-block d-xl-inline-block"></span>
+                    </div>
+                  </div>
+                  <div class="progress progress-template">
+                    <div role="progressbar" style="width: 0%" class="progress-bar progress-bar-template dashbg-1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 result-card">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <strong class="party-name">...</strong>
+                    </div>
+                    <div class="number dashtext-2">
+                        <span class="count">...</span>
+                        <span class="seats-label d-none d-lg-inline-block d-xl-inline-block"></span>
+                    </div>
+                  </div>
+                  <div class="progress progress-template">
+                    <div role="progressbar" style="width: 0%" class="progress-bar progress-bar-template dashbg-2"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 result-card">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <strong class="party-name">...</strong>
+                    </div>
+                    <div class="number dashtext-3">
+                        <span class="count">...</span>
+                        <span class="seats-label d-none d-lg-inline-block d-xl-inline-block"></span>
+                    </div>
+                  </div>
+                  <div class="progress progress-template">
+                    <div role="progressbar" style="width: 0%" class="progress-bar progress-bar-template dashbg-3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 result-card">
+                <div class="statistic-block block">
+                  <div class="progress-details d-flex align-items-end justify-content-between">
+                    <div class="title">
+                      <strong class="party-name">...</strong>
+                    </div>
+                    <div class="number dashtext-4">
+                        <span class="count">...</span>
+                        <span class="seats-label d-none d-lg-inline-block d-xl-inline-block"></span>
+                    </div>
+                  </div>
+                  <div class="progress progress-template">
+                    <div role="progressbar" style="width: 0%" class="progress-bar progress-bar-template dashbg-4"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="no-padding-bottom">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <!-- Seats Donut Chart: -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="stats-with-chart-2 block">
+                            <div class="title">
+                                <strong class="d-block">Seats</strong>
+                                <span class="d-block">Number of seats per party</span>
+                            </div>
+                            <div class="piechart chart">
+                                <canvas id="seats" width="554" height="312"></canvas>
+                                <!-- <div class="text">
+                                    <strong class="d-block" id="leading-party-by-seats"></strong>
+                                    <span class="d-block">Leading</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Votes Donut Chart: -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="stats-with-chart-2 block">
+                            <div class="title">
+                                <strong class="d-block">Votes</strong>
+                                <span class="d-block">Number of votes per party</span>
+                            </div>
+                            <div class="piechart chart">
+                                <canvas id="votes" width="554" height="312"></canvas>
+                                <!-- <div class="text">
+                                    <strong class="d-block" id="leading-party-by-votes"></strong>
+                                    <span class="d-block">Leading</span>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Stations & ridings stats: -->
+                        <div class="stats-2-block block d-flex stations-results">
+                            <div class="stats-2 d-flex">
+                                <div class="stats-2-content">
+                                    <strong class="d-block count">...</strong>
+                                    <span class="d-block">Polling Stations completed</span>
+                                    <div class="progress progress-template progress-small">
+                                        <div role="progressbar" style="width: 0%;" class="progress-bar progress-bar-template progress-bar-small dashbg-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-2 d-flex ridings-results">
+                                <div class="stats-2-content">
+                                    <strong class="d-block count">...</strong>
+                                    <span class="d-block">Ridings with results</span>
+                                    <div class="progress progress-template progress-small">
+                                        <div role="progressbar" style="width: 0%;" class="progress-bar progress-bar-template progress-bar-small dashbg-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data stats: -->
+                        <div class="stats-3-block block d-flex">
+                            <div class="stats-3">
+                                <strong class="d-block" id="votes-cast">...</strong>
+                                <span class="d-block">Votes cast</span>
+                                <div class="progress progress-template progress-small">
+                                    <div id="part-rate" role="progressbar" style="width: 0%;" class="progress-bar progress-bar-template progress-bar-small dashbg-1"></div>
+                                </div>
+                            </div>
+                            <div class="stats-3">
+                                <strong class="d-block" id="participation-rate">...</strong>
+                                <span class="d-block">Participation rate</span>
+                            </div>
+                        </div>
+
+                        <!-- Participation rate stats: -->
+                        <div class="stats-2-block block d-flex stations-results">
+                            <div class="stats-2 d-flex">
+                                <div class="stats-2-content">
+                                    <strong class="d-block count" id="valid-votes">...</strong>
+                                    <span class="d-block">Valid votes</span>
+                                    <div class="progress progress-template progress-small">
+                                        <div id="valid-votes-rate" role="progressbar" style="width: 0%;" class="progress-bar progress-bar-template progress-bar-small dashbg-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stats-2 d-flex ridings-results">
+                                <div class="stats-2-content">
+                                    <strong class="d-block count" id="rejected-votes">...</strong>
+                                    <span class="d-block">Rejected votes</span>
+                                    <div class="progress progress-template progress-small">
+                                        <div id="rejected-vote-rate" role="progressbar" style="width: 0%;" class="progress-bar progress-bar-template progress-bar-small dashbg-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="no-padding-bottom">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- General Results: -->
+                    <div class="col-lg-6">
+                        <div class="block">
+                            <div class="title">
+                                <strong>General Results</strong>
+                                <span class="d-block">Overall results per party</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-right">#</th>
+                                            <th>Party</th>
+                                            <th>Abbreviation</th>
+                                            <th class="text-right">Votes&nbsp;(%)</th>
+                                            <th class="text-right">Seats&nbsp;(#)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="parties-list"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ridings: -->
+                    <div class="col-lg-6">
+
+                        <div class="block">
+                            <div class="title">
+                                <strong class="d-block">Results by Riding</strong>
+                                <!-- <span class="d-block">Lorem ipsum</span> -->
+                            </div>
+                            <div class="block-body">
+                                <form>
+                                    <!-- Riding selector: -->
+                                    <div class="form-group row no-margin-bottom">
+                                        <div class="col-sm-12">
+                                            <select id="ridings-list" class="form-control mb-3"></select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Riding stats: -->
+                                    <!-- <div class="stats-3-block block d-flex">
+                                        <div class="stats-3 d-flex justify-content-between text-center" style="width: 100%">
+                                            <div class="item">
+                                                <strong class="d-block strong-sm" id="riding-stations-complete">...</strong>
+                                                <span class="d-block span-sm">Stations complete</span>
+                                            </div>
+                                            <div class="item">
+                                                <strong class="d-block strong-sm" id="riding-stations-total">...</strong>
+                                                <span class="d-block span-sm">Total stations</span>
+                                            </div>
+                                            <div class="item">
+                                                <strong class="d-block strong-sm" id="riding-registered-voters">...</strong>
+                                                <span class="d-block span-sm">Registered voters</span>
+                                            </div>
+                                            <div class="item">
+                                                <strong class="d-block strong-sm" id="riding-participation-rate">...</strong>
+                                                <span class="d-block span-sm">Participation rate</span>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+                                    <!-- Riding candidates: -->
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-hover table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-right">#</th>
+                                                    <th>Party</th>
+                                                    <th>Candidate</th>
+                                                    <th class="text-right">Votes&nbsp;(#)</th>
+                                                    <th></th>
+                                                    <th class="text-right">Votes&nbsp;(%)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="riding-candidates-list"></tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+          <div class="footer__block block no-margin-bottom">
+            <div class="container-fluid text-center">
+              <p class="no-margin-bottom">2019 &copy; <a href="https://github.comm/philsawicki">Philippe Sawicki</a></p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+    <script defer src="./bundle.std.js?_=1571611632618"></script>
+  </body>
+</html>

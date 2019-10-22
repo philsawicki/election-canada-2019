@@ -3,7 +3,7 @@
 
     const TOTAL_NB_SEATS = 338;
     const TOTAL_NB_REGISTERED_ELECTORS = 27126166;
-    const REFRESH_INTERVAL = 60 * 1000;
+    const REFRESH_INTERVAL = 30 * 1000;
 
     function buildResultsFromCSVData(lineResults) {
         const preliminaryCirconscriptions = new Map();

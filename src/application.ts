@@ -1,4 +1,3 @@
-import { ALL_PARTIES_AGGREGATE_RESULTS } from '../__tests__/content';
 import { buildResultsFromCSVData, getAbbreviationForParty } from './data-builder';
 import { formatRawResults, getRawResults } from './lib';
 import { REFRESH_INTERVAL, TOTAL_NB_REGISTERED_ELECTORS, TOTAL_NB_SEATS } from './settings';
@@ -36,7 +35,6 @@ export default class Application {
      */
     constructor() {
         this.installListeners();
-        // this.setupCharts();
         this.fetchData();
     }
 
@@ -118,7 +116,7 @@ export default class Application {
      */
     protected async fetchData() {
         try {
-            const rawResults = /*ALL_PARTIES_AGGREGATE_RESULTS; /*/ await getRawResults();
+            const rawResults = await getRawResults();
             const lines = await formatRawResults(rawResults);
             const data = buildResultsFromCSVData(lines);
 
@@ -130,13 +128,6 @@ export default class Application {
             setTimeout(() => {
                 this.fetchData();
             }, REFRESH_INTERVAL);
-
-            // setTimeout(async () => {
-            //     const lines = await formatRawResults(ALL_PARTIES_AGGREGATE_RESULTS);
-            //     const data = buildResultsFromCSVData(lines);
-
-            //     this.onResultsLoaded(data);
-            // }, 5 * 1000);
         }
     }
 
@@ -334,27 +325,6 @@ export default class Application {
      */
     protected drawSeatsChart(results: Results) {
         const { statistiques } = results;
-
-        // const currentNBSeats = statistiques.partisPolitiques
-        //     .reduce((accumulator, currentParty) => {
-        //         return accumulator + currentParty.nbCirconscriptionsEnAvance;
-        //     }, 0);
-        // const seats = [
-        //     ...statistiques.partisPolitiques
-        //         .filter(party => party.nbCirconscriptionsEnAvance > 0)
-        //         .map(party => party.nbCirconscriptionsEnAvance),
-        //     TOTAL_NB_SEATS - currentNBSeats
-        // ];
-        // let labels = statistiques.partisPolitiques
-        //     .filter((party, index) => {
-        //         return party.nbCirconscriptionsEnAvance > 0 && index < this.MAX_PARTIES_COUNT_FOR_CHARTS;
-        //     })
-        //     .map(party => party.abreviationPartiPolitique);
-        // if (seats.length === 1) {
-        //     labels = ['N./A.'];
-        // } else if (seats.length >= this.MAX_PARTIES_COUNT_FOR_CHARTS) {
-        //     labels.push('Others');
-        // }
 
         const sortedPartiesWithSeats = [...statistiques.partisPolitiques]
             .filter(party => party.nbVoteTotal > 0)

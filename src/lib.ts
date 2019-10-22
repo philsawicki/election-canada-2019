@@ -7,7 +7,7 @@
 export async function getRawResults() {
     const response = await fetch('https://cors-anywhere.herokuapp.com/https://enr.elections.ca/DownloadResults.aspx?_=' + Date.now(), {
         headers: {
-            'X-Requested-With': 'election-results'
+            'X-Requested-With': 'canada-election-results'
         },
         cache: 'no-cache'
     });
